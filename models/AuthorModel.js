@@ -35,7 +35,7 @@ class AuthorModel {
 
   // Método GETALL
   async getAll() {
-    return await AuthorSchema.find();
+    return await AuthorSchema.find().populate("libros");
   }
 
   // Método GETONE
@@ -45,7 +45,7 @@ class AuthorModel {
       throw new Error("El ID es inválido")
     }
 
-    return await AuthorSchema.findById(id)
+    return await AuthorSchema.findById(id).populate("libros")
   }
 }
 
